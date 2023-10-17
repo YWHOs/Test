@@ -1,0 +1,42 @@
+{
+
+	"skills":[
+			{
+				"name" : "fire",
+				"icon" : "icon_itemicon_gemstone",
+				"coolTime" : 2,
+				"isLock" : false
+			},
+			{
+				"name" : "ice",
+				"icon" : "icon_itemicon_guild_flag",
+				"coolTime" : 5,
+				"isLock" : false
+			},
+			{
+				"name" : "thunder",
+				"icon" : "icon_itemicon_energy",
+				"coolTime" : 6,
+				"isLock" : false
+			},
+			{
+				"name" : "rock",
+				"icon" : "icon_itemicon_castle",
+				"coolTime" : 4,
+				"isLock" : false
+			},
+			{
+				"name" : "dark",
+				"icon" : "icon_itemicon_skull",
+				"coolTime" : 10,
+				"isLock" : true
+			},
+			{
+				"name" : "light",
+				"icon" : "icon_itemicon_star",
+				"coolTime" : 20,
+				"isLock" : true
+			}
+	]
+
+}

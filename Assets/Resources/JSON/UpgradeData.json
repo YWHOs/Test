@@ -1,0 +1,46 @@
+{
+
+	"upgrade":[
+			{
+				"name" : "Attack",
+				"icon" : "equip_axe_2",
+				"level" : 1
+			},
+			{
+				"name" : "AttackSpeed",
+				"icon" : "equip_ring_blue",
+				"level" : 1
+			},
+			{
+				"name" : "Health",
+				"icon" : "equip_potion_red_1",
+				"level" : 1
+			},
+			{
+				"name" : "HealthRecovery",
+				"icon" : "equip_leaf",
+				"level" : 1
+			},
+			{
+				"name" : "Defense",
+				"icon" : "equip_shield_blue",
+				"level" : 1
+			},
+			{
+				"name" : "CriticalRate",
+				"icon" : "equip_posion_tooth",
+				"level" : 1
+			},
+			{
+				"name" : "CriticalDamage",
+				"icon" : "equip_tooth_red",
+				"level" : 1
+			},
+			{
+				"name" : "CriticalDamage",
+				"icon" : "equip_tooth_red",
+				"level" : 1
+			}
+	]
+
+}
