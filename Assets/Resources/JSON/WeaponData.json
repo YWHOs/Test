@@ -1,0 +1,21 @@
+{
+
+	"weapon":[
+			{
+				"name" : "Axe",
+				"icon" : "equip_axe_0",
+				"level" : 1
+			},
+			{
+				"name" : "Axe1",
+				"icon" : "equip_axe_1",
+				"level" : 2
+			},
+			{
+				"name" : "Axe2",
+				"icon" : "equip_axe_2",
+				"level" : 3
+			}
+	]
+
+}
