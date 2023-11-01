@@ -16,6 +16,11 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] float attackSpeed;
     public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
 
+    [SerializeField] float criticalRate;
+    public float CriticalRate { get { return criticalRate; } set { criticalRate = value; } }
+    [SerializeField] float criticalDamage;
+    public float CriticalDamage { get { return criticalDamage; } set { criticalDamage = value; } }
+
     [SerializeField] float moveSpeed;
-    public float MoveSpeed { get { return moveSpeed; } set {  moveSpeed = value; } }
+    public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
 }

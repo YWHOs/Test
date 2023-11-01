@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class DamageTextSpawn : MonoBehaviour
 {
@@ -22,10 +19,9 @@ public class DamageTextSpawn : MonoBehaviour
     }
     void GetObject(Vector3 _transform, float _damage)
     {
-        Vector3 pos = _transform;
-        pos.y += posY;
+        _transform.y += posY;
         DamageText damageText = damageTextPool.GetObject();
-        damageText.rectTransform.anchoredPosition = pos;
-        damageText.text.text = _damage.ToString();
+        damageText.rectTransform.anchoredPosition = _transform;
+        damageText.text.text = _damage.ToString("F1");
     }
 }

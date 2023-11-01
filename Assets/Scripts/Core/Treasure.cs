@@ -1,13 +1,16 @@
+using System;
 using TMPro;
 using UnityEngine;
 public class Treasure : MonoBehaviour
 {
     int gold;
-    public int Gold {  get { return gold; } set {  gold = value; } }
+    public int Gold { get { return gold; } set {  gold = value; } }
     [SerializeField] TextMeshProUGUI goldText;
 
+    public static event Action OnGoldChange;
     void Start()
     {
+        gold = 10000;
         EnemyCharacter.OnGetGold += ChangeGold;
     }
     void OnDestroy()
@@ -21,5 +24,6 @@ public class Treasure : MonoBehaviour
         {
             goldText.text = gold.ToString();
         }
+        OnGoldChange?.Invoke();
     }
 }

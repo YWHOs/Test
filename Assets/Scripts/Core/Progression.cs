@@ -6,8 +6,17 @@ public enum GoldAmount
 {
     Attack,
     AttackSpeed,
-    Health
+    Health,
+
+    MAX
 }
+[System.Serializable]
+class ProgressionCharacterClass
+{
+    public GoldAmount goldAmount;
+    public int[] levels;
+}
+
 [CreateAssetMenu(fileName = "Progression", menuName = "Stat/New Progression", order = 0)]
 public class Progression : ScriptableObject
 {
@@ -33,11 +42,4 @@ public class Progression : ScriptableObject
         if (levels.Length < _level) return 0;
         return levels[_level - 1];
     }
-    [System.Serializable]
-    class ProgressionCharacterClass
-    {
-        public GoldAmount goldAmount;
-        public int[] levels;
-    }
-    
 }

@@ -4,17 +4,54 @@
 			{
 				"name" : "Axe",
 				"icon" : "equip_axe_0",
-				"level" : 1
+				"level" : 1,
+				"attributes": {
+					"damage": 2,
+					"attackSpeed": 1.5,
+					"attackRange": 1.5
+				},
+				"upgrade" : 5,
+				"itemRarity" : "Common",
+				"probability" : 0.7
 			},
 			{
 				"name" : "Axe1",
 				"icon" : "equip_axe_1",
-				"level" : 2
+				"level" : 1,
+				"attributes": {
+					"damage": 4,
+					"attackSpeed": 1.0,
+					"attackRange": 1.5
+				},
+				"upgrade" : 10,
+				"itemRarity" : "Rare",
+				"probability" : 0.2
 			},
 			{
 				"name" : "Axe2",
 				"icon" : "equip_axe_2",
-				"level" : 3
+				"level" : 1,
+				"attributes": {
+					"damage": 6,
+					"attackSpeed": 0.5,
+					"attackRange": 1.5
+				},
+				"upgrade" : 15,
+				"itemRarity" : "Epic",
+				"probability" : 0.1
+			},
+			{
+				"name" : "Axe3",
+				"icon" : "equip_axe_3",
+				"level" : 1,
+				"attributes": {
+					"damage": 8,
+					"attackSpeed": 0.5,
+					"attackRange": 1.5
+				},
+				"upgrade" : 20,
+				"itemRarity" : "Epic",
+				"probability" : 0.01
 			}
 	]
 

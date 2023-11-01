@@ -6,7 +6,6 @@ public class AttackComponent : MonoBehaviour
 {
     [SerializeField] LayerMask layer;
 
-    float distanceTo;
     bool isAttacking;
 
     Transform target;
@@ -49,7 +48,7 @@ public class AttackComponent : MonoBehaviour
         else
         {
             // 타겟 방향으로 이동
-            distanceTo = Vector2.Distance(transform.position, target.transform.position);
+            float distanceTo = Vector2.Distance(transform.position, target.transform.position);
             if (distanceTo >= character.AttackRange)
             {
                 isAttacking = false;
@@ -67,25 +66,32 @@ public class AttackComponent : MonoBehaviour
     }
     IEnumerator AttackCo()
     {
-        if(!isAttacking)
+        isAttacking = true;
+        float damage = character.Damage;
+        if(Random.value < character.CriticalRate)
         {
-            isAttacking = true;
-            targetCharacter.CurrentHp -= character.Damage;
-            OnDamageText?.Invoke(target.position, character.Damage);
-            OnHealthBar?.Invoke();
-            if (targetCharacter.CurrentHp <= 0)
-            {
-                target = null;
-                targetCharacter.CurrentHp = targetCharacter.Hp;
-                targetCharacter.gameObject.SetActive(false);
-            }
-
-            yield return new WaitForSeconds(character.AttackSpeed);
-            isAttacking = false;
+            damage += damage * character.CriticalDamage;
         }
+        if(damage >= 0)
+        {
+            targetCharacter.CurrentHp -= damage;
+            OnDamageText?.Invoke(target.position, damage);
+            OnHealthBar?.Invoke();
+        }
+        TargetDie();
 
+        yield return new WaitForSeconds(character.AttackSpeed);
+        isAttacking = false;
     }
-
+    void TargetDie()
+    {
+        if (targetCharacter.CurrentHp <= 0)
+        {
+            target = null;
+            targetCharacter.CurrentHp = targetCharacter.Hp;
+            targetCharacter.gameObject.SetActive(false);
+        }
+    }
     public float GetFraction()
     {
         return character.CurrentHp / character.Hp;

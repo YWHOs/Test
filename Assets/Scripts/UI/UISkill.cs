@@ -38,7 +38,6 @@ public class UISkill : MonoBehaviour
     {
         foreach (SkillData skill in skillList.skills)
         {
-            //GameObject skillObject = Instantiate(skillButtonPrefab, parent);
             SkillButton skillObject = skillButtonPool.GetObject();
             // ¿Ã∏ß
             skillObject.GetComponentInChildren<TextMeshProUGUI>().text = skill.name;

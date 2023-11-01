@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyCharacter : BaseCharacter
@@ -5,13 +6,13 @@ public class EnemyCharacter : BaseCharacter
     [SerializeField] Vector2 generatePos;
     [SerializeField] int goldAmount;
 
-    EnemyPool enemyPool;
+    EnemyManager enemyManager;
+    public static event Action<int> OnGetGold;
+    public static event Action OnEnemyDie;
 
-    public delegate void GetGoldDelegate(int _goldAmount);
-    public static event GetGoldDelegate OnGetGold;
     void Start()
     {
-        enemyPool = GetComponentInParent<EnemyPool>();
+        enemyManager = GetComponentInParent<EnemyManager>();
     }
     void OnEnable()
     {
@@ -20,7 +21,8 @@ public class EnemyCharacter : BaseCharacter
     void OnDisable()
     {
         OnGetGold?.Invoke(goldAmount);
-        enemyPool?.enemyPool.GetObject();
-        enemyPool?.enemyPool.ReturnObject(this);
+        OnEnemyDie?.Invoke();
+        enemyManager?.EnemyGenerate(this);
     }
+
 }

@@ -1,18 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class OfflineReward : MonoBehaviour
 {
-    TextMeshProUGUI rewardText;
-    Treasure treasure;
-    void Awake()
-    {
-        rewardText = GetComponentInChildren<TextMeshProUGUI>();
-        treasure = FindObjectOfType<Treasure>();
-    }
+    [SerializeField] TextMeshProUGUI rewardText;
+    [SerializeField] Treasure treasure;
+
     void Start()
     {
         PlayerStartTime();
@@ -35,11 +29,11 @@ public class OfflineReward : MonoBehaviour
         DateTime currentTime = DateTime.Now;
         TimeSpan timeDif = currentTime - now;
 
-        if(rewardText)
-        {
-            rewardText.text = timeDif.Hours + "H : " + timeDif.Minutes + "M : " + timeDif.Seconds + "S";
-        }
         int rewardAmount = timeDif.Hours * 3600 + timeDif.Minutes * 60 + timeDif.Seconds;
+        if (rewardText)
+        {
+            rewardText.text = timeDif.Hours + "H : " + timeDif.Minutes + "M : " + timeDif.Seconds + "S" + "\n" + "<color=yellow>" + rewardAmount + "</color>";
+        }
         treasure?.ChangeGold(rewardAmount);
     }
 }

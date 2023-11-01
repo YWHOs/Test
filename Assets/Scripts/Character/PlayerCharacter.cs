@@ -1,20 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class PlayerCharacter : BaseCharacter
 {
-    // 업그레이드 버튼을 누르면
-    // 캐릭터 값에 수치를 변경시켜야 함
+    WeaponData equippedWeapon;
+    [SerializeField] QuestManager questManager;
 
-    // 업그레이드 버튼과 캐릭터의 값의 일치?
-
-    // 버튼NameText와 Character의 Stat 이름 값..?
     void Start()
     {
-
-
+        UpgradeButton.OnUpgradeButton += Upgrade;
+        UIWeapon.OnEquipWeapon += EquipWeapon;
     }
 
+    public void Upgrade(UpgradeButton _button, float _value)
+    {
+        switch (_button.stat)
+        {
+            case Stat.Damage:
+                Damage += _value;
+                break;
+            case Stat.AttackSpeed:
+                AttackSpeed -= _value;
+                break;
+            case Stat.AttackRange:
+                AttackRange += _value;
+                break;
+            case Stat.Hp:
+                Hp += _value;
+                break;
+            case Stat.Defense:
+                Defense += _value;
+                break;
+            case Stat.CriticalRate:
+                CriticalRate += _value;
+                break;
+            case Stat.CriticalDamage:
+                CriticalDamage += _value;
+                break;
+            default:
+                break;
+        }
+        questManager.QuestCount(QuestType.UpgradeItem, _button.Multi);
+    }
+    public void EquipWeapon(WeaponData _weapon)
+    {
+        if(IsEquippedWeapon())
+        {
+            Damage -= equippedWeapon.attributes.damage;
+        }
+        equippedWeapon = _weapon;
+
+        Damage += _weapon.attributes.damage;
+
+    }
+    
+    public void UpgradeWeapon(WeaponData _weapon, float _damage)
+    {
+        if(IsEquippedWeapon() && equippedWeapon == _weapon)
+        {
+            Damage += _damage;
+        }
+    }
+    public bool IsEquippedWeapon()
+    {
+        return equippedWeapon != null;
+    }
 }
