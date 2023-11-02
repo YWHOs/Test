@@ -10,7 +10,6 @@ public class Treasure : MonoBehaviour
     public static event Action OnGoldChange;
     void Start()
     {
-        gold = 10000;
         EnemyCharacter.OnGetGold += ChangeGold;
     }
     void OnDestroy()

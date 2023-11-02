@@ -8,11 +8,11 @@ public class WeaponData : ItemData
 {
     //public string name;
     //public string icon;
-    public int level;
-    public Attributes attributes;
-    public int upgrade;
-    public string itemRarity;
+    //public int level;
+    //public int upgrade;
+    //public string itemRarity;
     //public float probability;
+    public Attributes attributes;
 }
 [System.Serializable]
 public class Attributes

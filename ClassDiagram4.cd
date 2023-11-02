@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WeaponData" Collapsed="true">
+    <Position X="7" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapon\Weapon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="attributes" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Attributes">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapon\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponList">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapon\Weapon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="weapon" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Weapon" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAACAAAAAAAAEAAAAAAAAAAAAIgAAEQAAAABA=</HashCode>
+      <FileName>Assets\Scripts\Weapon\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemData">
+    <Position X="9" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAgAAAAAAAIAEEAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ItemData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIWeapon">
+    <Position X="1" Y="0.5" Width="2" />
+    <NestedTypes>
+      <Delegate Name="UIWeapon.EquipWeaponDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\UI\UIWeapon.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AjAUAAAAAKABAABAAAAAAAAABAEAAIBAgEAACACAIGA=</HashCode>
+      <FileName>Assets\Scripts\UI\UIWeapon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="weaponList" />
+      <Field Name="weaponObject" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

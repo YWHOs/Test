@@ -3,14 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIWeapon : MonoBehaviour
+public class UIWeapon : Gacha
 {
     // Weapon Manager
     [SerializeField] Weapon weaponPrefab;
     [SerializeField] Transform parent;
 
     ObjectPool<Weapon> weaponPool;
-    WeaponList weaponList;
+    public WeaponList weaponList;
 
     public Dictionary<string ,int> dictWeapon = new Dictionary<string ,int>();
 
@@ -53,12 +53,12 @@ public class UIWeapon : MonoBehaviour
         }
     }
 
-    public void InteractableButton(int _index)
+    public override void InteractableButton(int _index)
     {
         if (WeaponCount(_index) <= 0 || weaponObject[_index].button.interactable == true) return;
         weaponObject[_index].button.interactable = true;
     }
-    public void UpdateWeaponUI()
+    public override void UpdateUI()
     {
         for (int i = 0; i < weaponList.weapon.Length; i++)
         {
@@ -78,7 +78,7 @@ public class UIWeapon : MonoBehaviour
     {
         OnEquipWeapon?.Invoke(weaponList.weapon[_index]);
     }
-    public bool IsUpgradeValid()
+    public override bool IsUpgradeValid()
     {
         for (int i = 0; i < weaponList.weapon.Length; i++)
         {
@@ -110,7 +110,24 @@ public class UIWeapon : MonoBehaviour
                 weaponObject[i].weaponLevelText.text = "Lv." + weaponList.weapon[i].level.ToString();
             }
         }
-        UpdateWeaponUI();
+        UpdateUI();
     }
-    // 
+    
+    public override float GetProbability(int _index)
+    {
+        return weaponList.weapon[_index].probability;
+    }
+    public override string GetIcon(int _index)
+    {
+        return weaponList.weapon[_index].icon;
+    }
+    public override int ItemDictCountUp(int _index)
+    {
+        string name = weaponList.weapon[_index].name;
+        return dictWeapon[name]++;
+    }
+    public int GetDict(WeaponList _list, int _index, string _name)
+    {
+        return dictWeapon[_name]++;
+    }
 }

@@ -57,6 +57,10 @@ public class QuestManager : MonoBehaviour
 
         EnemyCharacter.OnEnemyDie += KillEnemy;
     }
+    void OnDestroy()
+    {
+        EnemyCharacter.OnEnemyDie -= KillEnemy;
+    }
 
     void AddQuest(QuestType _questType, int _questNum, string _questTitle, string _questDescription, int _num, int _gold)
     {

@@ -1,15 +1,8 @@
 using System.Collections;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.Pool;
 using UnityEngine.UI;
 
-public class ItemData
-{
-    public string name;
-    public string icon;
-    public float probability;
-}
+
 
 public class GachaSystem : MonoBehaviour
 {
@@ -20,15 +13,13 @@ public class GachaSystem : MonoBehaviour
     [SerializeField] Transform panelTf;
     [SerializeField] Button exitButton;
 
-    //[SerializeField] MenuButton weaponMenu;
-    //public ObjectPool<Weapon> weaponPool;
 
-    //Test
-    ItemData item;
-    WeaponData weaponData;
-    //
     [SerializeField] WeaponGachaPool weaponGacha;
 
+    void Awake()
+    {
+
+    }
     //void Awake()
     //{
     //    uIWeapon = FindObjectOfType<UIWeapon>();
@@ -78,13 +69,16 @@ public class GachaSystem : MonoBehaviour
     public void GachaButtonClick(int _count)
     {
         panelTf?.gameObject.SetActive(true);
-        //StartCoroutine(GacahButtonCo(_count));
-
-        StartCoroutine(GacahButtonCoT(weaponGacha.weaponList.weapon, weaponGacha.weaponList, _count, weaponGacha.weaponPool));
+        StartCoroutine(GacahButtonCoT(weaponGacha.uIWeapon.weaponList.weapon, _count, weaponGacha.uIWeapon, weaponGacha.weaponPool, weaponGacha.weaponMenu.notify));
     }
 
     // 무기, 펫, 유물 등등?
-    IEnumerator GacahButtonCoT<TList, TPool>(TList[] list, WeaponList _item, int _count, ObjectPool<TPool> _objectPool) where TPool : MonoBehaviour
+    // UIWeapon Menu에 있는 UI관리
+    // ObjectPool
+    // Notify 노티 날릴 메뉴
+    // TList = weaponGacha.weaponList.weapon
+
+    IEnumerator GacahButtonCoT<TList, TPool>(TList[] list, int _count, Gacha _gacha, ObjectPool<TPool> _objectPool, Notify _menuNotify) where TPool : MonoBehaviour
     {
         exitButton.gameObject.SetActive(false);
         while (_count > 0)
@@ -94,13 +88,12 @@ public class GachaSystem : MonoBehaviour
             int index = -1;
             for (int i = 0; i < list.Length; i++)
             {
-                probability += weaponGacha.weaponList.weapon[i].probability;
+                probability += _gacha.GetProbability(i);
                 if (random <= probability)
                 {
                     index = i;
-                    // Dictionary와 Button 통일하게 만들 최상위 클래스 UI 만들기
-                    weaponGacha.uIWeapon.dictWeapon[weaponGacha.weaponList.weapon[i].name]++;
-                    weaponGacha.uIWeapon.InteractableButton(index);
+                    _gacha.ItemDictCountUp(i);
+                    _gacha.InteractableButton(index);
                     break;
                 }
             }
@@ -108,18 +101,18 @@ public class GachaSystem : MonoBehaviour
             {
                 var obj = _objectPool?.GetObject();
                 Image image = obj.GetComponent<Image>();
-                Sprite sprite = Resources.Load<Sprite>("Image/Upgrade/" + weaponGacha.weaponList?.weapon[index].icon);
+                Sprite sprite = Resources.Load<Sprite>("Image/Upgrade/" + _gacha.GetIcon(index));
                 image.sprite = sprite;
                 _count--;
                 yield return new WaitForSeconds(0.1f);
             }
         }
-        if (weaponGacha.uIWeapon.IsUpgradeValid())
+        if (_gacha.IsUpgradeValid())
         {
-            weaponGacha.weaponMenu?.notify?.ShowNotify();
+            _menuNotify.ShowNotify();
         }
         exitButton.gameObject.SetActive(true);
-        weaponGacha.uIWeapon.UpdateWeaponUI();
+        _gacha.UpdateUI();
     }
 
 }

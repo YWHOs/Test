@@ -38,6 +38,10 @@ public class UpgradeButton : MonoBehaviour
         // 골드 변경시 색상 변경
         Treasure.OnGoldChange += LackOfGold;
     }
+    void OnDestroy()
+    {
+        Treasure.OnGoldChange -= LackOfGold;
+    }
     public void UpgradeButtonClick()
     {
         if (treasure?.Gold < goldToUpgrade || treasure?.Gold < multiGoldToUpgrade) return;

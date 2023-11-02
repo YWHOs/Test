@@ -11,7 +11,11 @@ public class PlayerCharacter : BaseCharacter
         UpgradeButton.OnUpgradeButton += Upgrade;
         UIWeapon.OnEquipWeapon += EquipWeapon;
     }
-
+    void OnDestroy()
+    {
+        UpgradeButton.OnUpgradeButton -= Upgrade;
+        UIWeapon.OnEquipWeapon -= EquipWeapon;
+    }
     public void Upgrade(UpgradeButton _button, float _value)
     {
         switch (_button.stat)
