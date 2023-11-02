@@ -66,6 +66,7 @@ public class MenuButton : MonoBehaviour
 
     void SmoothMove()
     {
-        menuObject.rectTransform.anchoredPosition = Vector2.Lerp(menuObject.rectTransform.anchoredPosition, Vector2.zero, Time.deltaTime * 10);
+        RectTransform rectTransform = menuObject?.rectTransform;
+        rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, Vector2.zero, Time.deltaTime * 10);
     }
 }

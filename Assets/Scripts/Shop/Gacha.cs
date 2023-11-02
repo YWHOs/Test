@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 가챠 아이템들에 필요한 정보
 public abstract class Gacha : MonoBehaviour
 {
     // 아이템을 얻지 못하면 클릭이 불가능 하기 때문에 사용
@@ -21,4 +22,7 @@ public abstract class Gacha : MonoBehaviour
     // Item Count 증가 (ex. Weapon Menu에 들어가 있는 Weapon들의 Count가 증가)
     public abstract int ItemDictCountUp(int _index);
 
+    public abstract int GetListLength();
+
+    public abstract void ShowMenuNotify();
 }

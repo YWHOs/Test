@@ -24,7 +24,7 @@ public class PlayerCharacter : BaseCharacter
                 Damage += _value;
                 break;
             case Stat.AttackSpeed:
-                AttackSpeed -= _value;
+                AttackSpeed -= _value * _value;
                 break;
             case Stat.AttackRange:
                 AttackRange += _value;

@@ -6,20 +6,12 @@ using UnityEngine.UI;
 
 public class GachaSystem : MonoBehaviour
 {
-    //WeaponList weaponList;
-    //UIWeapon uIWeapon;
-
-    //[SerializeField] Weapon weaponPrefab;
     [SerializeField] Transform panelTf;
     [SerializeField] Button exitButton;
 
 
     [SerializeField] WeaponGachaPool weaponGacha;
 
-    void Awake()
-    {
-
-    }
     //void Awake()
     //{
     //    uIWeapon = FindObjectOfType<UIWeapon>();
@@ -69,16 +61,11 @@ public class GachaSystem : MonoBehaviour
     public void GachaButtonClick(int _count)
     {
         panelTf?.gameObject.SetActive(true);
-        StartCoroutine(GacahButtonCoT(weaponGacha.uIWeapon.weaponList.weapon, _count, weaponGacha.uIWeapon, weaponGacha.weaponPool, weaponGacha.weaponMenu.notify));
+        StartCoroutine(GacahButtonCoT(_count, weaponGacha.uIWeapon, weaponGacha.weaponPool));
     }
 
-    // 무기, 펫, 유물 등등?
-    // UIWeapon Menu에 있는 UI관리
-    // ObjectPool
-    // Notify 노티 날릴 메뉴
-    // TList = weaponGacha.weaponList.weapon
-
-    IEnumerator GacahButtonCoT<TList, TPool>(TList[] list, int _count, Gacha _gacha, ObjectPool<TPool> _objectPool, Notify _menuNotify) where TPool : MonoBehaviour
+    // 무기, 펫, 유물 등등
+    IEnumerator GacahButtonCoT<TPool>(int _count, Gacha _gacha, ObjectPool<TPool> _objectPool) where TPool : MonoBehaviour
     {
         exitButton.gameObject.SetActive(false);
         while (_count > 0)
@@ -86,7 +73,7 @@ public class GachaSystem : MonoBehaviour
             float random = Random.Range(0f, 100f);
             float probability = 0;
             int index = -1;
-            for (int i = 0; i < list.Length; i++)
+            for (int i = 0; i < _gacha.GetListLength(); i++)
             {
                 probability += _gacha.GetProbability(i);
                 if (random <= probability)
@@ -109,7 +96,7 @@ public class GachaSystem : MonoBehaviour
         }
         if (_gacha.IsUpgradeValid())
         {
-            _menuNotify.ShowNotify();
+            _gacha.ShowMenuNotify();
         }
         exitButton.gameObject.SetActive(true);
         _gacha.UpdateUI();

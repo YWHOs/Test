@@ -22,13 +22,6 @@ public class AttackComponent : MonoBehaviour
     {
         character = GetComponent<BaseCharacter>();
     }
-    void Start()
-    {
-        if(character)
-        {
-            character.CurrentHp = character.Hp;
-        }
-    }
     void Update()
     {
         MoveTo();
@@ -48,7 +41,7 @@ public class AttackComponent : MonoBehaviour
         else
         {
             // 타겟 방향으로 이동
-            float distanceTo = Vector2.Distance(transform.position, target.transform.position);
+            float distanceTo = Vector2.Distance(transform.position, target.position);
             if (distanceTo >= character.AttackRange)
             {
                 isAttacking = false;

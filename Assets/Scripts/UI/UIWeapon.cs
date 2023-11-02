@@ -8,11 +8,14 @@ public class UIWeapon : Gacha
     // Weapon Manager
     [SerializeField] Weapon weaponPrefab;
     [SerializeField] Transform parent;
+    [SerializeField] MenuButton weaponMenu;
 
     ObjectPool<Weapon> weaponPool;
+    [HideInInspector]
     public WeaponList weaponList;
 
     public Dictionary<string ,int> dictWeapon = new Dictionary<string ,int>();
+
 
     Weapon[] weaponObject;
     [SerializeField] PlayerCharacter playerCharacter;
@@ -126,8 +129,12 @@ public class UIWeapon : Gacha
         string name = weaponList.weapon[_index].name;
         return dictWeapon[name]++;
     }
-    public int GetDict(WeaponList _list, int _index, string _name)
+    public override int GetListLength()
     {
-        return dictWeapon[_name]++;
+        return weaponList.weapon.Length;
+    }
+    public override void ShowMenuNotify()
+    {
+        weaponMenu.notify.ShowNotify();
     }
 }

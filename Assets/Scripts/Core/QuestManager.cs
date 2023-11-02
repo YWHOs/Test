@@ -89,12 +89,15 @@ public class QuestManager : MonoBehaviour
             treasure.ChangeGold(currentQuestData.gold);
             questCount = 0;
             currentQuestData = GetQuest(++currentQuestNum);
-            QuestNameText();
+            if(currentQuestData != null)
+            {
+                QuestNameText();
+            }
         }
     }
     public void QuestCount(QuestType _questType, int _count = 1)
     {
-        if (GetQuest(currentQuestNum).questType != _questType) return;
+        if (currentQuestData == null || GetQuest(currentQuestNum).questType != _questType) return;
 
         questCount += _count;
         QuestNameText();
