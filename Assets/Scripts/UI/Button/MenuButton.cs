@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public enum MenuType
 {
@@ -28,7 +29,7 @@ public class MenuButton : MonoBehaviour
     {
         if (menuObject)
         {
-            curPos = menuObject.transform.position;
+            curPos = menuObject.rectTransform.anchoredPosition;
         }
         normalColor = button.colors.normalColor;
         selectColor = button.colors.selectedColor;
@@ -56,7 +57,7 @@ public class MenuButton : MonoBehaviour
         else
         {
             menuObject.gameObject.SetActive(false);
-            menuObject.transform.position = curPos;
+            menuObject.rectTransform.DOAnchorPos(curPos, 0.5f);
             color.normalColor = normalColor;
             color.selectedColor = normalColor;
         }
@@ -67,6 +68,7 @@ public class MenuButton : MonoBehaviour
     void SmoothMove()
     {
         RectTransform rectTransform = menuObject?.rectTransform;
-        rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, Vector2.zero, Time.deltaTime * 10);
+        rectTransform.DOAnchorPos(Vector2.zero, 0.5f).SetEase(Ease.Linear);
+        //rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, Vector2.zero, Time.deltaTime * 10);
     }
 }
