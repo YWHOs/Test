@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,8 @@ public class AttackComponent : MonoBehaviour
     BaseCharacter character;
     BaseCharacter targetCharacter;
 
-    public delegate void HealthBarDelegate();
-    public static event HealthBarDelegate OnHealthBar;
+
+    public static event Action OnHealthBar;
 
     public delegate void DamageTextDelegate(Vector3 _pos, float _damage);
     public static event DamageTextDelegate OnDamageText;
@@ -61,7 +62,7 @@ public class AttackComponent : MonoBehaviour
     {
         isAttacking = true;
         float damage = character.Damage;
-        if(Random.value < character.CriticalRate)
+        if(UnityEngine.Random.value < character.CriticalRate)
         {
             damage += damage * character.CriticalDamage;
         }

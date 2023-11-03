@@ -13,9 +13,13 @@ public class DamageTextSpawn : MonoBehaviour
         damageTextPool = new ObjectPool<DamageText>(damageTextPrefab, initDamageTextPoolSize, transform);
     }
 
-    void Start()
+    void OnEnable()
     {
         AttackComponent.OnDamageText += GetObject;
+    }
+    void OnDisable()
+    {
+        AttackComponent.OnDamageText -= GetObject;
     }
     void GetObject(Vector3 _transform, float _damage)
     {

@@ -33,14 +33,14 @@ public class UpgradeButton : MonoBehaviour
     {
         treasure = FindObjectOfType<Treasure>();
     }
-    void Start()
+    void OnEnable()
     {
         // 골드 변경시 색상 변경
-        Treasure.OnGoldChange += LackOfGold;
+        treasure.OnGoldChange += LackOfGold;
     }
-    void OnDestroy()
+    void OnDisable()
     {
-        Treasure.OnGoldChange -= LackOfGold;
+        treasure.OnGoldChange -= LackOfGold;
     }
     public void UpgradeButtonClick()
     {

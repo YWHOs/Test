@@ -162,10 +162,13 @@ MonoBehaviour:
   hp: 100
   currentHp: 0
   defense: 1
-  damage: 1
+  damage: 4
   attackRange: 1
-  attackSpeed: 10
+  attackSpeed: 0.5
+  criticalRate: 0
+  criticalDamage: 0
   moveSpeed: 0
+  questManager: {fileID: 0}
 --- !u!114 &2327767880168350084
 MonoBehaviour:
   m_ObjectHideFlags: 0

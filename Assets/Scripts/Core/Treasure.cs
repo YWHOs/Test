@@ -7,12 +7,12 @@ public class Treasure : MonoBehaviour
     public int Gold { get { return gold; } set {  gold = value; } }
     [SerializeField] TextMeshProUGUI goldText;
 
-    public static event Action OnGoldChange;
-    void Start()
+    public event Action OnGoldChange;
+    void OnEnable()
     {
         EnemyCharacter.OnGetGold += ChangeGold;
     }
-    void OnDestroy()
+    void OnDisable()
     {
         EnemyCharacter.OnGetGold -= ChangeGold;
     }
