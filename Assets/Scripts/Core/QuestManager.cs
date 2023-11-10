@@ -55,9 +55,12 @@ public class QuestManager : MonoBehaviour
         currentQuestData = GetQuest(currentQuestNum);
         QuestNameText();
 
+    }
+    void OnEnable()
+    {
         EnemyCharacter.OnEnemyDie += KillEnemy;
     }
-    void OnDestroy()
+    void OnDisable()
     {
         EnemyCharacter.OnEnemyDie -= KillEnemy;
     }

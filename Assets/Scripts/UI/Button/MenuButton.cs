@@ -34,13 +34,7 @@ public class MenuButton : MonoBehaviour
         normalColor = button.colors.normalColor;
         selectColor = button.colors.selectedColor;
     }
-    void Update()
-    {
-        if (isPress && menuObject)
-        {
-            SmoothMove();
-        }
-    }
+
     public void MenuButtonClick()
     {
         if (!menuObject) return;
@@ -48,16 +42,19 @@ public class MenuButton : MonoBehaviour
         isPress = !isPress;
 
         ColorBlock color = button.colors;
+
+        RectTransform rectTransform = menuObject.rectTransform;
+
         if (isPress)
         {
             menuObject.gameObject.SetActive(true);
+            rectTransform.DOAnchorPos(Vector2.zero, 0.5f).SetEase(Ease.Linear).From(curPos);
             color.selectedColor = selectColor;
             color.normalColor = selectColor;
         }
         else
         {
             menuObject.gameObject.SetActive(false);
-            menuObject.rectTransform.DOAnchorPos(curPos, 0.5f);
             color.normalColor = normalColor;
             color.selectedColor = normalColor;
         }

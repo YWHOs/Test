@@ -1,0 +1,39 @@
+{
+
+	"armor":[
+			{
+				"name" : "Armor",
+				"icon" : "equip_stone",
+				"level" : 1,
+				"attributes": {
+					"defense": 2
+				},
+				"upgrade" : 5,
+				"itemRarity" : "Common",
+				"probability" : 0.7
+			},
+			{
+				"name" : "Armor1",
+				"icon" : "equip_shield_wood",
+				"level" : 1,
+				"attributes": {
+					"defense": 4
+				},
+				"upgrade" : 10,
+				"itemRarity" : "Rare",
+				"probability" : 0.2
+			},
+			{
+				"name" : "Armor2",
+				"icon" : "equip_shield_blue",
+				"level" : 1,
+				"attributes": {
+					"defense": 6
+				},
+				"upgrade" : 15,
+				"itemRarity" : "Epic",
+				"probability" : 0.1
+			}
+	]
+
+}

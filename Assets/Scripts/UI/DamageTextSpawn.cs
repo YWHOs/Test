@@ -25,6 +25,7 @@ public class DamageTextSpawn : MonoBehaviour
     {
         _transform.y += posY;
         DamageText damageText = damageTextPool.GetObject();
+        damageText.SetPool(damageTextPool);
         damageText.rectTransform.anchoredPosition = _transform;
         damageText.text.text = _damage.ToString("F1");
     }

@@ -54,7 +54,7 @@ public class UpgradeManager : MonoBehaviour
 
             upgradeButton[i].UpgradeValue = upgradeList.upgrade[i].value;
             // ½ºÅÝ
-            Stat stats = (Stat)i;
+            EStat stats = (EStat)i;
             if (upgradeButton[i].nameText.text == stats.ToString())
             {
                 upgradeButton[i].stat = stats;

@@ -1,40 +1,40 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
+    int currentCount;
+    public int CurrentCount { get { return currentCount; }  set { if(GameManager.Instance?.GameState == EGameState.Idle) currentCount = value; } }
     int bossGenCount = 3;
 
     EnemyPool enemyPool;
-    EnemyCharacter bossCharacter;
+    [SerializeField] Slider stageSlider;
     void Awake()
     {
         enemyPool = GetComponent<EnemyPool>();
     }
-    public void EnemyGenerate(EnemyCharacter _character)
+    public void EnemyGenerate()
     {
-        if (bossCharacter)
+        if (GameManager.Instance?.GameState != EGameState.Idle) return;
+
+        if(currentCount < bossGenCount)
         {
-            KillEnemy(enemyPool?.bossEnemyPool, bossCharacter);
-            bossGenCount = 3;
-        }
-        if (bossGenCount > 0)
-        {
-            SpawnEnemy(enemyPool.enemyPool);
-            bossGenCount--;
+            SpawnEnemy(enemyPool?.enemyPool);
         }
         else
         {
-            bossCharacter = SpawnEnemy(enemyPool.bossEnemyPool);
+            SpawnEnemy(enemyPool?.bossEnemyPool);
         }
-        KillEnemy(enemyPool?.enemyPool, _character);
+        StageSliderValue();
     }
 
-    EnemyCharacter SpawnEnemy(ObjectPool<EnemyCharacter> _pool)
+    public void SpawnEnemy<T>(ObjectPool<T> _pool) where T : MonoBehaviour
     {
-        return _pool?.GetObject();
+        _pool?.GetObject();
     }
-    void KillEnemy(ObjectPool<EnemyCharacter> _pool, EnemyCharacter _character)
+
+    void StageSliderValue()
     {
-        _pool.ReturnObject(_character);
+        stageSlider.value = (float)currentCount / bossGenCount;
     }
 }

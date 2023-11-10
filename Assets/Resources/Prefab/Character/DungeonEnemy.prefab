@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2760674265352103287
+--- !u!1001 &5873298338379264503
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,43 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6183308512732132976, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
       propertyPath: m_Name
-      value: BoosEnemy
+      value: DungeonEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 6183308512732132977, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b38b393cc3fd1974c994cb6565acb14e, type: 3}
-    - target: {fileID: 6183308512732133005, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
-      propertyPath: hp
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6183308512732133005, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
-      propertyPath: goldAmount
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6183308512732133005, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
-      propertyPath: attackRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6183308512732133005, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
-      propertyPath: attackSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6183308512732133005, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
-      propertyPath: generatePos.y
-      value: 1.5
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: ed24ac2928ba52640ae8bfde9b999662, type: 3}
     - target: {fileID: 6183308512732133006, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6183308512732133006, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6183308512732133006, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6183308512732133006, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,31 +62,31 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6183308512732133005, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
---- !u!1 &8322762934167261959 stripped
+--- !u!1 &310084185797740423 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6183308512732132976, guid: 87b9eb443336ec94b8398d5df7a38c5a, type: 3}
-  m_PrefabInstance: {fileID: 2760674265352103287}
+  m_PrefabInstance: {fileID: 5873298338379264503}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-1369829540971282826
+--- !u!114 &4522928127816363895
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8322762934167261959}
+  m_GameObject: {fileID: 310084185797740423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e49ee268dcbea54ebf990a8f25ce464, type: 3}
+  m_Script: {fileID: 11500000, guid: a3c12e27241778540927ebd9742e5e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 30
+  hp: 10
   currentHp: 0
   defense: 0
-  damage: 10
+  damage: 5
   attackRange: 1
-  attackSpeed: 3
+  attackSpeed: 10
   criticalRate: 0
   criticalDamage: 0
   moveSpeed: 1
   generatePos: {x: 2, y: 1.5}
-  goldAmount: 100
+  goldAmount: 0

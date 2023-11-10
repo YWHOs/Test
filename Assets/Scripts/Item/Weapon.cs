@@ -12,10 +12,10 @@ public class WeaponData : ItemData
     //public int upgrade;
     //public string itemRarity;
     //public float probability;
-    public Attributes attributes;
+    public WeaponAttributes attributes;
 }
 [System.Serializable]
-public class Attributes
+public class WeaponAttributes
 {
     public float damage;
     public float attackSpeed;

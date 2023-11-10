@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class UpgradeButton : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class UpgradeButton : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI goldText;
     public Image iconImage;
-    public Stat stat;
+    public EStat stat;
 
     int upgradeLevel;
     public int UpgradeLevel { get { return upgradeLevel; } set { upgradeLevel = value; } }
@@ -26,6 +27,8 @@ public class UpgradeButton : MonoBehaviour
     public int Multi { get { return multi; } set { multi = value; } }
     Treasure treasure;
 
+    bool isClick;
+
     public delegate void UpgradeButtonDelegate(UpgradeButton _button, float _value);
     public static event UpgradeButtonDelegate OnUpgradeButton;
 
@@ -41,6 +44,22 @@ public class UpgradeButton : MonoBehaviour
     void OnDisable()
     {
         treasure.OnGoldChange -= LackOfGold;
+    }
+    void Update()
+    {
+        if (isClick)
+        {
+            Invoke("UpgradeButtonClick", 0.5f);
+        }
+    }
+    public void ButtonDown()
+    {
+        isClick = true;
+    }
+    public void ButtonUp()
+    {
+        isClick = false;
+        CancelInvoke("UpgradeButtonClick");
     }
     public void UpgradeButtonClick()
     {

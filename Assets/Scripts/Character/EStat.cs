@@ -1,4 +1,4 @@
-public enum Stat
+public enum EStat
 {
     Damage,
     AttackSpeed,

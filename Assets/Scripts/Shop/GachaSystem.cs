@@ -65,7 +65,7 @@ public class GachaSystem : MonoBehaviour
     }
 
     // 무기, 펫, 유물 등등
-    IEnumerator GacahButtonCoT<TPool>(int _count, Gacha _gacha, ObjectPool<TPool> _objectPool) where TPool : MonoBehaviour
+    IEnumerator GacahButtonCoT<TPool>(int _count, IGacha _gacha, ObjectPool<TPool> _objectPool) where TPool : MonoBehaviour
     {
         exitButton.gameObject.SetActive(false);
         while (_count > 0)

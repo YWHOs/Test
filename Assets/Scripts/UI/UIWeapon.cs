@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIWeapon : Gacha
+public class UIWeapon : MonoBehaviour, IGacha
 {
     // Weapon Manager
     [SerializeField] Weapon weaponPrefab;
@@ -56,12 +56,12 @@ public class UIWeapon : Gacha
         }
     }
 
-    public override void InteractableButton(int _index)
+    public void InteractableButton(int _index)
     {
         if (WeaponCount(_index) <= 0 || weaponObject[_index].button.interactable == true) return;
         weaponObject[_index].button.interactable = true;
     }
-    public override void UpdateUI()
+    public void UpdateUI()
     {
         for (int i = 0; i < weaponList.weapon.Length; i++)
         {
@@ -81,7 +81,7 @@ public class UIWeapon : Gacha
     {
         OnEquipWeapon?.Invoke(weaponList.weapon[_index]);
     }
-    public override bool IsUpgradeValid()
+    public bool IsUpgradeValid()
     {
         for (int i = 0; i < weaponList.weapon.Length; i++)
         {
@@ -116,24 +116,24 @@ public class UIWeapon : Gacha
         UpdateUI();
     }
     
-    public override float GetProbability(int _index)
+    public float GetProbability(int _index)
     {
         return weaponList.weapon[_index].probability;
     }
-    public override string GetIcon(int _index)
+    public string GetIcon(int _index)
     {
         return weaponList.weapon[_index].icon;
     }
-    public override int ItemDictCountUp(int _index)
+    public int ItemDictCountUp(int _index)
     {
         string name = weaponList.weapon[_index].name;
         return dictWeapon[name]++;
     }
-    public override int GetListLength()
+    public int GetListLength()
     {
         return weaponList.weapon.Length;
     }
-    public override void ShowMenuNotify()
+    public void ShowMenuNotify()
     {
         weaponMenu.notify.ShowNotify();
     }

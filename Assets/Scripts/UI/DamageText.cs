@@ -5,7 +5,7 @@ using TMPro;
 
 public class DamageText : MonoBehaviour
 {
-    [SerializeField] DamageTextSpawn damageTextSpawn;
+    ObjectPool<DamageText> damageTextSpawn;
     public RectTransform rectTransform;
     public TextMeshProUGUI text;
     void Awake()
@@ -13,18 +13,18 @@ public class DamageText : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         text = GetComponent<TextMeshProUGUI>();
     }
-    void Start()
-    {
-        damageTextSpawn = GetComponentInParent<DamageTextSpawn>();
-    }
+
     void OnEnable()
     {
         StartCoroutine(ReturnObjectCo());
     }
-
+    public void SetPool(ObjectPool<DamageText> _pool)
+    {
+        damageTextSpawn = _pool;
+    }
     IEnumerator ReturnObjectCo()
     {
         yield return new WaitForSeconds(0.3f);
-        damageTextSpawn?.damageTextPool?.ReturnObject(this);
+        damageTextSpawn?.ReturnObject(this);
     }
 }

@@ -1,4 +1,5 @@
 
+using System.Collections;
 using UnityEngine;
 
 public class PlayerCharacter : BaseCharacter
@@ -16,29 +17,41 @@ public class PlayerCharacter : BaseCharacter
         UpgradeButton.OnUpgradeButton -= Upgrade;
         UIWeapon.OnEquipWeapon -= EquipWeapon;
     }
+    void OnEnable()
+    {
+        CurrentHp = Hp;
+    }
+    void OnDisable()
+    {
+        Invoke("ReGeneratePlayerCo", 1);
+    }
+    void ReGeneratePlayerCo()
+    {
+        gameObject.SetActive(true);
+    }
     public void Upgrade(UpgradeButton _button, float _value)
     {
         switch (_button.stat)
         {
-            case Stat.Damage:
+            case EStat.Damage:
                 Damage += _value;
                 break;
-            case Stat.AttackSpeed:
+            case EStat.AttackSpeed:
                 AttackSpeed -= _value * _value;
                 break;
-            case Stat.AttackRange:
+            case EStat.AttackRange:
                 AttackRange += _value;
                 break;
-            case Stat.Hp:
+            case EStat.Hp:
                 Hp += _value;
                 break;
-            case Stat.Defense:
+            case EStat.Defense:
                 Defense += _value;
                 break;
-            case Stat.CriticalRate:
+            case EStat.CriticalRate:
                 CriticalRate += _value;
                 break;
-            case Stat.CriticalDamage:
+            case EStat.CriticalDamage:
                 CriticalDamage += _value;
                 break;
             default:

@@ -12,7 +12,7 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] float damage;
     public float Damage { get { return damage; } set { damage = value; } }
     [SerializeField] float attackRange;
-    public float AttackRange {  get { return attackRange; } set { attackRange = value; } }
+    public float AttackRange {  get { return attackRange; } set { attackRange = Mathf.Min(value, 2f); } }
     [SerializeField] float attackSpeed;
     public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = Mathf.Max(0.2f, value); } }
 
@@ -24,8 +24,4 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] float moveSpeed;
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
 
-    void Awake()
-    {
-        currentHp = hp;
-    }
 }

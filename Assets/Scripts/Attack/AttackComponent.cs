@@ -23,6 +23,10 @@ public class AttackComponent : MonoBehaviour
     {
         character = GetComponent<BaseCharacter>();
     }
+    void OnEnable()
+    {
+        isAttacking = false;
+    }
     void Update()
     {
         MoveTo();
@@ -51,7 +55,7 @@ public class AttackComponent : MonoBehaviour
             }
             else
             {
-                if (!isAttacking)
+                if (!isAttacking && target)
                 {
                     StartCoroutine(AttackCo());
                 }
@@ -70,9 +74,9 @@ public class AttackComponent : MonoBehaviour
         {
             targetCharacter.CurrentHp -= damage;
             OnDamageText?.Invoke(target.position, damage);
-            OnHealthBar?.Invoke();
         }
         TargetDie();
+        OnHealthBar?.Invoke();
 
         yield return new WaitForSeconds(character.AttackSpeed);
         isAttacking = false;
@@ -81,14 +85,17 @@ public class AttackComponent : MonoBehaviour
     {
         if (targetCharacter.CurrentHp <= 0)
         {
-            target = null;
-            targetCharacter.CurrentHp = targetCharacter.Hp;
+            NullTarget();
             targetCharacter.gameObject.SetActive(false);
         }
     }
     public float GetFraction()
     {
         return character.CurrentHp / character.Hp;
+    }
+    public Transform NullTarget()
+    {
+        return target = null;
     }
 }
    
