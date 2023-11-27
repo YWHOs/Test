@@ -9,8 +9,11 @@ public interface IGacha
     // (ex. Weapon의 Count 증가, Slider, Upgrade가 가능하면 노티로 알려 줌)
     void UpdateUI();
 
+    public bool IsRarityItem(int _index);
     // 아이템들의 확률 가져오기
-    float GetProbability(int _index);
+    int GetProbability(int _index);
+    int GetAllProbability();
+    void SetProbability(int _index, int _probability);
 
     string GetIcon(int _index);
 
@@ -20,4 +23,5 @@ public interface IGacha
     int GetListLength();
 
     void ShowMenuNotify();
+
 }

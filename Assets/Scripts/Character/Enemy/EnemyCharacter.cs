@@ -12,10 +12,14 @@ public class EnemyCharacter : BaseCharacter
     public static event Action OnEnemyDie;
 
     protected ObjectPool<EnemyCharacter> pool;
+
+    SpawnCoin spawnCoin;
     void Awake()
     {
         enemyManager = GetComponentInParent<EnemyManager>();
+        spawnCoin = FindObjectOfType<SpawnCoin>();
     }
+
     void OnEnable()
     {
         transform.position = generatePos;
@@ -31,6 +35,7 @@ public class EnemyCharacter : BaseCharacter
     }
     protected virtual void OnDisable()
     {
+        SetCoinPosition();
         EnemyDisableEvent();
         CurrentHp = Hp;
     }
@@ -43,6 +48,13 @@ public class EnemyCharacter : BaseCharacter
             OnGetGold?.Invoke(goldAmount);
             OnEnemyDie?.Invoke();
             enemyManager?.EnemyGenerate();
+        }
+    }
+    void SetCoinPosition()
+    {
+        if (spawnCoin && !gameObject.activeSelf)
+        {
+            spawnCoin.SetCoinPos(transform);
         }
     }
 }

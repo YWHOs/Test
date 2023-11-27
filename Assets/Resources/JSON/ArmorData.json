@@ -10,7 +10,7 @@
 				},
 				"upgrade" : 5,
 				"itemRarity" : "Common",
-				"probability" : 0.7
+				"probability" : 0
 			},
 			{
 				"name" : "Armor1",
@@ -21,7 +21,7 @@
 				},
 				"upgrade" : 10,
 				"itemRarity" : "Rare",
-				"probability" : 0.2
+				"probability" : 0
 			},
 			{
 				"name" : "Armor2",
@@ -32,7 +32,7 @@
 				},
 				"upgrade" : 15,
 				"itemRarity" : "Epic",
-				"probability" : 0.1
+				"probability" : 0
 			}
 	]
 

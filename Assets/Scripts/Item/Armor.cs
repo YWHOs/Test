@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 [System.Serializable]
 public class ArmorData : ItemData
@@ -15,9 +12,9 @@ public class ArmorAttributes
 [System.Serializable]
 public class ArmorList
 {
-    public ArmorData[] weapon;
+    public ArmorData[] armor;
 }
 public class Armor : Item
 {
-
+    
 }

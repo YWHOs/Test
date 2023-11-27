@@ -116,9 +116,26 @@ public class UIWeapon : MonoBehaviour, IGacha
         UpdateUI();
     }
     
-    public float GetProbability(int _index)
+    public bool IsRarityItem(int _index)
+    {
+        return weaponList.weapon[_index].itemRarity == "Legendary";
+    }
+    public int GetProbability(int _index)
     {
         return weaponList.weapon[_index].probability;
+    }
+    public int GetAllProbability()
+    {
+        int probability = 0;
+        for(int i = 0;i < weaponList.weapon.Length; i++)
+        {
+            probability += weaponList.weapon[i].probability;
+        }
+        return probability;
+    }
+    public void SetProbability(int _index, int _probability)
+    {
+        weaponList.weapon[_index].probability = _probability;
     }
     public string GetIcon(int _index)
     {

@@ -12,7 +12,7 @@
 				},
 				"upgrade" : 5,
 				"itemRarity" : "Common",
-				"probability" : 0.7
+				"probability" : 1
 			},
 			{
 				"name" : "Axe1",
@@ -25,7 +25,7 @@
 				},
 				"upgrade" : 10,
 				"itemRarity" : "Rare",
-				"probability" : 0.2
+				"probability" : 0
 			},
 			{
 				"name" : "Axe2",
@@ -38,7 +38,7 @@
 				},
 				"upgrade" : 15,
 				"itemRarity" : "Epic",
-				"probability" : 0.1
+				"probability" : 0
 			},
 			{
 				"name" : "Axe3",
@@ -50,8 +50,8 @@
 					"attackRange": 1.5
 				},
 				"upgrade" : 20,
-				"itemRarity" : "Epic",
-				"probability" : 0.01
+				"itemRarity" : "Legendary",
+				"probability" : 1
 			}
 	]
 

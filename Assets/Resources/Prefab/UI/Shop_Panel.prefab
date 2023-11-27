@@ -198,8 +198,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3052328179053383256}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 100
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -874,6 +874,7 @@ GameObject:
   - component: {fileID: 4817219639645215240}
   - component: {fileID: 4817219639645215242}
   - component: {fileID: 4817219639645215243}
+  - component: {fileID: 7389405885948511613}
   m_Layer: 5
   m_Name: Shop_Panel
   m_TagString: Untagged
@@ -944,6 +945,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7389405885948511613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817219639645215241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74150e1a84b94b542884730f616c2b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelText: {fileID: 4817219639963679841}
+  slider: {fileID: 1886489879196339235}
 --- !u!1 &4817219639903996525
 GameObject:
   m_ObjectHideFlags: 0
